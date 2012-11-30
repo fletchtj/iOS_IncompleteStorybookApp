@@ -12,6 +12,7 @@
 		5A2284551645C0180066BD93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A2284541645C0180066BD93 /* CoreGraphics.framework */; };
 		5A22847D1645C1870066BD93 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A22847C1645C1870066BD93 /* AudioToolbox.framework */; };
 		5A22847F1645C6FE0066BD93 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A22847E1645C6FE0066BD93 /* AVFoundation.framework */; };
+		5A63F7CD1668F76000585DE0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A63F7CC1668F76000585DE0 /* QuartzCore.framework */; };
 		5AED84D31651609E0011BB36 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AED84CE1651609E0011BB36 /* Actor.m */; };
 		5AED84D41651609E0011BB36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AED84D01651609E0011BB36 /* AppDelegate.m */; };
 		5AED84D51651609E0011BB36 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AED84D21651609E0011BB36 /* ViewController.m */; };
@@ -41,6 +42,7 @@
 		5A2284541645C0180066BD93 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5A22847C1645C1870066BD93 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5A22847E1645C6FE0066BD93 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5A63F7CC1668F76000585DE0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5AED84CD1651609E0011BB36 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Actor.h; path = IncompleteStorybookApp/Actor.h; sourceTree = SOURCE_ROOT; };
 		5AED84CE1651609E0011BB36 /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Actor.m; path = IncompleteStorybookApp/Actor.m; sourceTree = SOURCE_ROOT; };
 		5AED84CF1651609E0011BB36 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = IncompleteStorybookApp/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A63F7CD1668F76000585DE0 /* QuartzCore.framework in Frameworks */,
 				5A22847F1645C6FE0066BD93 /* AVFoundation.framework in Frameworks */,
 				5A22847D1645C1870066BD93 /* AudioToolbox.framework in Frameworks */,
 				5A2284511645C0180066BD93 /* UIKit.framework in Frameworks */,
@@ -104,6 +107,7 @@
 		5A22844F1645C0180066BD93 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A63F7CC1668F76000585DE0 /* QuartzCore.framework */,
 				5A22847E1645C6FE0066BD93 /* AVFoundation.framework */,
 				5A22847C1645C1870066BD93 /* AudioToolbox.framework */,
 				5A2284501645C0180066BD93 /* UIKit.framework */,

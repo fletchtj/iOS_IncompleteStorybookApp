@@ -197,8 +197,8 @@
                          completion:^(BOOL finished){
                              if (finished) { }
                          }];
-        [(Actor *)gestureRecognizer.view rotate:4 Duration:0.125];
-
+//        [(Actor *)gestureRecognizer.view rotate:0.5 degrees:90.0];
+        [(Actor *)gestureRecognizer.view rotate360:0.5 repeat:1];
     }
     
 }
@@ -212,12 +212,7 @@
         [gestureRecognizer setTranslation:CGPointMake(0, 0) inView:gestureRecognizer.view];
     } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         CGPoint finalPosition = CGPointMake(418.0, 314.0);
-        [UIView animateWithDuration:0.75 delay:0
-                            options:UIViewAnimationOptionCurveEaseOut
-                         animations:^ {
-                             gestureRecognizer.view.center = finalPosition;
-                         }
-                         completion:NULL];
+        [(Actor *)gestureRecognizer.view moveToPoint:finalPosition FromPoint:gestureRecognizer.view.center WithDuration:0.75];
     }
 }
 
