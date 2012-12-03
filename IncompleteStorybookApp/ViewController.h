@@ -9,15 +9,20 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import "recordViewController.h"
 
-@interface ViewController : UIViewController <AVAudioPlayerDelegate, UIGestureRecognizerDelegate> {
+@interface ViewController : UIViewController <AVAudioPlayerDelegate, UIGestureRecognizerDelegate, ModalViewControllerDelegate> {
     AVAudioPlayer *player;
     IBOutlet UIButton *playButton;
+    IBOutlet UIButton *recordCustomButton;
 }
 
 - (IBAction)playButtonPressed:(UIButton *)sender;
+- (IBAction)recordCustomPressed:(UIButton *)sender;
+- (IBAction)removeCustomAudioFile:(UIButton *)sender;
 
 @property (nonatomic, strong) AVAudioPlayer *player;
 @property (nonatomic, retain) UIButton *playButton;
+@property (nonatomic, retain) UIButton *recordCustomButton;
 
 @end

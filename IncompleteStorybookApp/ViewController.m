@@ -25,12 +25,13 @@
     NSTimer *timer;
     int nextWord;
     CGPoint oPosJack;
+    BOOL customExists;
 }
 
 @end
 
 @implementation ViewController
-@synthesize player, playButton;
+@synthesize player, playButton, recordCustomButton;
 
 - (void)viewDidLoad
 {
@@ -50,8 +51,19 @@
     NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"page1" ofType:@"aif"];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
     
+    // custom audio file for page
+    NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *customSound = [docsPath stringByAppendingPathComponent:@"custom_page1.caf"];
+    NSURL *customURL = [[NSURL alloc] initFileURLWithPath:customSound];
+    customExists = [[NSFileManager defaultManager] fileExistsAtPath:customSound];
+    
     // set up audio player
-    self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+    if (customExists) {
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:customURL error:nil];
+    } else {
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+    }
+    
     if (self.player) {
         [self.player prepareToPlay];
         [self.player setDelegate:self];
@@ -149,20 +161,70 @@
     if (player.playing == YES)
         [self pausePlaybackForPlayer: player];
     else {
+        if (!customExists) {
+            for (int i=0; i<[wordButtons count]; i++){
+                [[wordButtons objectAtIndex:i] setBackgroundColor:[UIColor clearColor]];
+            }
+            [btn0 setBackgroundColor:[UIColor yellowColor]];
+            [UIView animateWithDuration:0.75 delay:0.25 options:UIViewAnimationCurveEaseInOut
+                             animations:^{
+                                 [btn0 setBackgroundColor:[UIColor clearColor]];
+                             } completion:^(BOOL finished) { }
+             ];
+            nextWord = 1;
+            float timeInterval = [[markerTimings objectAtIndex:nextWord] floatValue] - [[markerTimings objectAtIndex:nextWord-1] floatValue];
+            timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(updateTimer) userInfo:nil repeats:NO];
+        }
+        
         [player setCurrentTime:0.];
         [self startPlaybackForPlayer: player];
-        for (int i=0; i<[wordButtons count]; i++){
-            [[wordButtons objectAtIndex:i] setBackgroundColor:[UIColor clearColor]];
+    }
+}
+
+- (IBAction)recordCustomPressed:(UIButton *)sender
+{
+    recordViewController *recordController = [[recordViewController alloc] init];
+    recordController.delegate = self;
+    recordController.modalPresentationStyle = UIModalPresentationFormSheet;
+    recordController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:recordController animated:YES completion:nil];
+    
+    recordController.view.superview.bounds = CGRectMake(0, 0, 640, 150);
+    recordController.view.superview.frame = CGRectMake(64, 834, 640, 150);
+}
+
+- (IBAction)removeCustomAudioFile:(UIButton *)sender
+{
+    NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *customSound = [docsPath stringByAppendingPathComponent:@"custom_page1.caf"];
+    NSError *error;
+    if([[NSFileManager defaultManager] fileExistsAtPath:customSound])
+    {
+        if (![[NSFileManager defaultManager] removeItemAtPath:customSound error:&error]) {
+            NSLog(@"Delete file error: %@", error);
+        } else {
+            customExists = NO;
+            NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"page1" ofType:@"aif"];
+            NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+            self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
         }
-        [btn0 setBackgroundColor:[UIColor yellowColor]];
-        [UIView animateWithDuration:0.75 delay:0.25 options:UIViewAnimationCurveEaseInOut
-                         animations:^{
-                             [btn0 setBackgroundColor:[UIColor clearColor]];
-                         } completion:^(BOOL finished) { }
-         ];
-        nextWord = 1;
-        float timeInterval = [[markerTimings objectAtIndex:nextWord] floatValue] - [[markerTimings objectAtIndex:nextWord-1] floatValue];
-        timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(updateTimer) userInfo:nil repeats:NO];
+    }
+
+}
+
+- (void)didDismissModalView
+{
+    [self dismissModalViewControllerAnimated:YES];
+    
+    // custom audio file for page
+    NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *customSound = [docsPath stringByAppendingPathComponent:@"custom_page1.caf"];
+    NSURL *customURL = [[NSURL alloc] initFileURLWithPath:customSound];
+    customExists = [[NSFileManager defaultManager] fileExistsAtPath:customSound];
+    
+    // set up audio player
+    if (customExists) {
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:customURL error:nil];
     }
 }
 
