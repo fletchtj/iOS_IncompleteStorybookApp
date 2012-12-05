@@ -12,10 +12,10 @@
 		5A2284551645C0180066BD93 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A2284541645C0180066BD93 /* CoreGraphics.framework */; };
 		5A22847D1645C1870066BD93 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A22847C1645C1870066BD93 /* AudioToolbox.framework */; };
 		5A22847F1645C6FE0066BD93 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A22847E1645C6FE0066BD93 /* AVFoundation.framework */; };
+		5A340E9A166DA89C00784BA5 /* recordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A340E99166DA89C00784BA5 /* recordViewController.m */; };
+		5A340E9E166DA8AA00784BA5 /* recordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A340E9C166DA8AA00784BA5 /* recordViewController.xib */; };
 		5A63F7CD1668F76000585DE0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A63F7CC1668F76000585DE0 /* QuartzCore.framework */; };
 		5ABFD50616695A5E009ED510 /* misc_bucket.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ABFD50516695A5E009ED510 /* misc_bucket.png */; };
-		5ADED5B9166D251700AF30B0 /* recordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ADED5B7166D251700AF30B0 /* recordViewController.m */; };
-		5ADED5BA166D251700AF30B0 /* recordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ADED5B8166D251700AF30B0 /* recordViewController.xib */; };
 		5AED84D31651609E0011BB36 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AED84CE1651609E0011BB36 /* Actor.m */; };
 		5AED84D41651609E0011BB36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AED84D01651609E0011BB36 /* AppDelegate.m */; };
 		5AED84D51651609E0011BB36 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AED84D21651609E0011BB36 /* ViewController.m */; };
@@ -45,11 +45,11 @@
 		5A2284541645C0180066BD93 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		5A22847C1645C1870066BD93 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5A22847E1645C6FE0066BD93 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5A340E98166DA89C00784BA5 /* recordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = recordViewController.h; path = IncompleteStorybookApp/recordViewController.h; sourceTree = SOURCE_ROOT; };
+		5A340E99166DA89C00784BA5 /* recordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = recordViewController.m; path = IncompleteStorybookApp/recordViewController.m; sourceTree = SOURCE_ROOT; };
+		5A340E9D166DA8AA00784BA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = recordViewController.xib; sourceTree = "<group>"; };
 		5A63F7CC1668F76000585DE0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5ABFD50516695A5E009ED510 /* misc_bucket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = misc_bucket.png; path = IncompleteStorybookApp/images/misc_bucket.png; sourceTree = SOURCE_ROOT; };
-		5ADED5B6166D251700AF30B0 /* recordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recordViewController.h; sourceTree = SOURCE_ROOT; };
-		5ADED5B7166D251700AF30B0 /* recordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = recordViewController.m; sourceTree = SOURCE_ROOT; };
-		5ADED5B8166D251700AF30B0 /* recordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = recordViewController.xib; sourceTree = SOURCE_ROOT; };
 		5AED84CD1651609E0011BB36 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Actor.h; path = IncompleteStorybookApp/Actor.h; sourceTree = SOURCE_ROOT; };
 		5AED84CE1651609E0011BB36 /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Actor.m; path = IncompleteStorybookApp/Actor.m; sourceTree = SOURCE_ROOT; };
 		5AED84CF1651609E0011BB36 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = IncompleteStorybookApp/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -127,14 +127,14 @@
 		5A2284561645C0180066BD93 /* IncompleteStorybookApp */ = {
 			isa = PBXGroup;
 			children = (
+				5A340E98166DA89C00784BA5 /* recordViewController.h */,
+				5A340E99166DA89C00784BA5 /* recordViewController.m */,
 				5AED84CD1651609E0011BB36 /* Actor.h */,
 				5AED84CE1651609E0011BB36 /* Actor.m */,
 				5AED84CF1651609E0011BB36 /* AppDelegate.h */,
 				5AED84D01651609E0011BB36 /* AppDelegate.m */,
 				5AED84D11651609E0011BB36 /* ViewController.h */,
 				5AED84D21651609E0011BB36 /* ViewController.m */,
-				5ADED5B6166D251700AF30B0 /* recordViewController.h */,
-				5ADED5B7166D251700AF30B0 /* recordViewController.m */,
 				5A8B27F0164B698B004C4EB3 /* Images */,
 				5A2284791645C1020066BD93 /* Audio */,
 				5A2284571645C0180066BD93 /* Supporting Files */,
@@ -186,9 +186,9 @@
 		5AED84F9165161E20011BB36 /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
+				5A340E9C166DA8AA00784BA5 /* recordViewController.xib */,
 				5AED84FA165161E20011BB36 /* InfoPlist.strings */,
 				5AED84FC165161E20011BB36 /* ViewController.xib */,
-				5ADED5B8166D251700AF30B0 /* recordViewController.xib */,
 			);
 			name = en.lproj;
 			path = IncompleteStorybookApp/en.lproj;
@@ -262,7 +262,7 @@
 				5AED84FE165161E20011BB36 /* InfoPlist.strings in Resources */,
 				5AED84FF165161E20011BB36 /* ViewController.xib in Resources */,
 				5ABFD50616695A5E009ED510 /* misc_bucket.png in Resources */,
-				5ADED5BA166D251700AF30B0 /* recordViewController.xib in Resources */,
+				5A340E9E166DA8AA00784BA5 /* recordViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,13 +277,21 @@
 				5AED84D41651609E0011BB36 /* AppDelegate.m in Sources */,
 				5AED84D51651609E0011BB36 /* ViewController.m in Sources */,
 				5AED84E2165161510011BB36 /* main.m in Sources */,
-				5ADED5B9166D251700AF30B0 /* recordViewController.m in Sources */,
+				5A340E9A166DA89C00784BA5 /* recordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5A340E9C166DA8AA00784BA5 /* recordViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A340E9D166DA8AA00784BA5 /* en */,
+			);
+			name = recordViewController.xib;
+			sourceTree = "<group>";
+		};
 		5AED84FA165161E20011BB36 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
