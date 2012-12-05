@@ -207,6 +207,10 @@
             NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"page1" ofType:@"aif"];
             NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
             self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+            if (self.player) {
+                [self.player prepareToPlay];
+                [self.player setDelegate:self];
+            }
         }
     }
 
@@ -225,6 +229,10 @@
     // set up audio player
     if (customExists) {
         self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:customURL error:nil];
+        if (self.player) {
+            [self.player prepareToPlay];
+            [self.player setDelegate:self];
+        }
     }
 }
 
