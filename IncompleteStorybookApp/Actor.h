@@ -13,4 +13,7 @@
 - (void)rotate:(NSTimeInterval)duration degrees:(CGFloat)degrees;
 - (void)rotate360:(NSTimeInterval)duration repeat:(CGFloat)repeat;
 - (void)moveToPoint:(CGPoint)fPos FromPoint:(CGPoint)oPos WithDuration:(NSTimeInterval)duration;
+- (void)swing:(NSTimeInterval)duration repeat:(CGFloat)repeat;
+
+- (void)playSound:(NSString *)fName WithExt:(NSString *)ext;
 @end

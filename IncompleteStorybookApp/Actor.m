@@ -8,6 +8,7 @@
 
 #import "Actor.h"
 #import <QuartzCore/QuartzCore.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 #define DEGREES_TO_RADIANS(angle) (angle/180.0*M_PI)
 #define RADIANS_TO_DEGREES(rads) (rads/M_PI * 180.0)
@@ -89,6 +90,22 @@
     [self.layer addAnimation:pathAnimation forKey:@"move"];
 }
 
+- (void)swing:(NSTimeInterval)duration repeat:(CGFloat)repeat
+{
+    CAKeyframeAnimation *anim = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+    NSArray *values = [NSArray arrayWithObjects:
+                               [NSNumber numberWithFloat:0.0],
+                               [NSNumber numberWithFloat:M_PI_4/2],
+                               [NSNumber numberWithFloat:0.0],
+                               [NSNumber numberWithFloat:-M_PI_4/2],
+                               [NSNumber numberWithFloat:0.0], nil];
+    [anim setValues:values];
+    [anim setDuration:duration];
+    [anim setRepeatCount:repeat];
+    [anim setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+    [self.layer addAnimation:anim forKey:@"swing"];
+}
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     if (@"moveAnim" == [anim valueForKey:@"name"]) {
@@ -97,6 +114,22 @@
         self.center = fPos;
         [self.layer removeAnimationForKey:@"move"];
     }
+}
+
+- (void)playSound:(NSString *)fName WithExt:(NSString *)ext
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:fName ofType:ext];
+    SystemSoundID audioEffect;
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSURL *pathURL = [NSURL fileURLWithPath : path];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
+        AudioServicesPlaySystemSound(audioEffect);
+    } else {
+        NSLog(@"error, file not found: %@", path);
+    }
+//    AudioServicesRemoveSystemSoundCompletion(audioEffect);
+//    AudioServicesDisposeSystemSoundID(audioEffect);
 }
 
 /*

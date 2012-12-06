@@ -20,6 +20,7 @@
     IBOutlet UIImageView *jack;
     IBOutlet UIImageView *jill;
     IBOutlet UIImageView *cloud;
+    IBOutlet UIImageView *bucket;
     NSMutableArray *markerTimings;
     NSArray *wordButtons;
     NSTimer *timer;
@@ -38,10 +39,16 @@
     [super viewDidLoad];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    UITapGestureRecognizer *tapBucket = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBucketTap:)];
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-
+    
+    [bucket addGestureRecognizer:tapBucket];
     [jack addGestureRecognizer:tapGesture];
     [jack addGestureRecognizer:panGesture];
+    
+    bucket.layer.anchorPoint = CGPointMake(0.5, 0.0);
+    bucket.center = CGPointMake(bucket.center.x, bucket.center.y-(bucket.bounds.size.height/2));
+    
     oPosJack = jack.center;
     
     [playButton setBackgroundImage:[UIImage imageNamed:@"btn_play.png"] forState:UIControlStateNormal];
@@ -189,8 +196,8 @@
     recordController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:recordController animated:YES completion:nil];
     
-    recordController.view.superview.bounds = CGRectMake(0, 0, 640, 150);
-    recordController.view.superview.frame = CGRectMake(64, 834, 640, 150);
+    recordController.view.superview.bounds = CGRectMake(0, 0, 640, 180);
+    recordController.view.superview.frame = CGRectMake(64, 804, 640, 180);
 }
 
 - (IBAction)removeCustomAudioFile:(UIButton *)sender
@@ -256,7 +263,13 @@
 
 #pragma mark Handle Gestures
 
+- (void)handleBucketTap:(UIGestureRecognizer *)gestureRecognizer {
+    [(Actor *)gestureRecognizer.view swing:0.5 repeat:2];
+    [(Actor *)gestureRecognizer.view playSound:@"slosh" WithExt:@"mp3"];
+}
+
 - (void)handleTap:(UIGestureRecognizer *)gestureRecognizer {
+    NSLog(@"tapped");
     if(gestureRecognizer.state == UIGestureRecognizerStateEnded)
     {
         [UIView animateWithDuration:0.5 delay:0
@@ -269,20 +282,24 @@
                          }];
 //        [(Actor *)gestureRecognizer.view rotate:0.5 degrees:90.0];
         [(Actor *)gestureRecognizer.view rotate360:0.5 repeat:1];
+        [(Actor *)gestureRecognizer.view playSound:@"slidedown" WithExt:@"mp3"];
     }
     
 }
 - (void)handlePan:(UIPanGestureRecognizer *)gestureRecognizer {
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view];
 //    CGPoint velocity = [gestureRecognizer velocityInView:gestureRecognizer.view];
-    
-    if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        CGFloat yPos = (gestureRecognizer.view.center.y + translation.y < oPosJack.y) ? oPosJack.y : gestureRecognizer.view.center.y + translation.y;
-        gestureRecognizer.view.center = CGPointMake(gestureRecognizer.view.center.x, yPos);
-        [gestureRecognizer setTranslation:CGPointMake(0, 0) inView:gestureRecognizer.view];
-    } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        CGPoint finalPosition = CGPointMake(418.0, 314.0);
-        [(Actor *)gestureRecognizer.view moveToPoint:finalPosition FromPoint:gestureRecognizer.view.center WithDuration:0.75];
+    if (gestureRecognizer.view.center.y >= oPosJack.y)
+    {
+        if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+            CGFloat yPos = gestureRecognizer.view.center.y + translation.y;
+            gestureRecognizer.view.center = CGPointMake(gestureRecognizer.view.center.x, yPos);
+            [gestureRecognizer setTranslation:CGPointMake(0, 0) inView:gestureRecognizer.view];
+        } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+            CGPoint finalPosition = CGPointMake(418.0, 314.0);
+            [(Actor *)gestureRecognizer.view moveToPoint:finalPosition FromPoint:gestureRecognizer.view.center WithDuration:0.75];
+            [(Actor *)gestureRecognizer.view playSound:@"boing" WithExt:@"mp3"];
+        }
     }
 }
 

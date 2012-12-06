@@ -321,7 +321,6 @@
 						<reference key="NSNextKeyView" ref="854383355"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="IBUIContentMode">5</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
@@ -331,45 +330,52 @@
 					<object class="IBUIButton" id="659554399">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 941}, {183, 44}}</string>
+						<string key="NSFrame">{{37, 843}, {299, 61}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="876051133"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
+						<int key="IBUIContentMode">5</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Record Custom Audio</string>
 						<reference key="IBUIHighlightedTitleColor" ref="113625890"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="917736065"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">ui_record_custom_audio.png</string>
+						</object>
 						<reference key="IBUIFontDescription" ref="867995639"/>
 						<reference key="IBUIFont" ref="43466337"/>
 					</object>
 					<object class="IBUIButton" id="876051133">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{211, 941}, {202, 44}}</string>
+						<string key="NSFrame">{{37, 923}, {299, 61}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
+						<int key="IBUIContentMode">5</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Remove Custom Audio</string>
 						<reference key="IBUIHighlightedTitleColor" ref="113625890"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="917736065"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">ui_clear_custom_audio.png</string>
+						</object>
 						<reference key="IBUIFontDescription" ref="867995639"/>
 						<reference key="IBUIFont" ref="43466337"/>
 					</object>
@@ -498,6 +504,14 @@
 					<int key="connectionID">374</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">bucket</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="802611606"/>
+					</object>
+					<int key="connectionID">378</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">playButtonPressed:</string>
 						<reference key="source" ref="875085190"/>
@@ -563,8 +577,8 @@
 							<reference ref="875085190"/>
 							<reference ref="752320174"/>
 							<reference ref="802611606"/>
-							<reference ref="659554399"/>
 							<reference ref="876051133"/>
+							<reference ref="659554399"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -693,6 +707,7 @@
 				<string key="321.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="0.0" key="34.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<string key="372.CustomClassName">Actor</string>
 				<string key="372.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="373.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="376.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -704,7 +719,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">377</int>
+			<int key="maxID">378</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -746,6 +761,7 @@
 						<string key="btn4">UIButton</string>
 						<string key="btn5">UIButton</string>
 						<string key="btn6">UIButton</string>
+						<string key="bucket">UIImageView</string>
 						<string key="cloud">UIImageView</string>
 						<string key="jack">UIImageView</string>
 						<string key="jill">UIImageView</string>
@@ -780,6 +796,10 @@
 						<object class="IBToOneOutletInfo" key="btn6">
 							<string key="name">btn6</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="bucket">
+							<string key="name">bucket</string>
+							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="cloud">
 							<string key="name">cloud</string>
@@ -821,6 +841,8 @@
 			<string key="misc_cloud1.png">{194, 84}</string>
 			<string key="misc_cloud2.png">{198, 93}</string>
 			<string key="misc_well.png">{184, 190}</string>
+			<string key="ui_clear_custom_audio.png">{299, 61}</string>
+			<string key="ui_record_custom_audio.png">{299, 61}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1930</string>
 	</data>
