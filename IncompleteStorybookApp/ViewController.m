@@ -21,6 +21,7 @@
     IBOutlet UIImageView *jill;
     IBOutlet UIImageView *cloud;
     IBOutlet UIImageView *bucket;
+    IBOutlet UIButton *trash;
     NSMutableArray *markerTimings;
     NSArray *wordButtons;
     NSTimer *timer;
@@ -55,7 +56,9 @@
     wordButtons = [[NSArray alloc] initWithObjects:btn0, btn1, btn2, btn3, btn4, btn5, btn6, nil];
     
     // audio file for page
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"page1" ofType:@"aif"];
+//    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"page1" ofType:@"aif"];
+//    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"jj_if" ofType:@"aif"];
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"jj_mf" ofType:@"aif"];
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
     
     // custom audio file for page
@@ -67,8 +70,10 @@
     // set up audio player
     if (customExists) {
         self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:customURL error:nil];
+        trash.enabled = YES;
     } else {
         self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+        trash.enabled = NO;
     }
     
     if (self.player) {
@@ -190,6 +195,8 @@
 
 - (IBAction)recordCustomPressed:(UIButton *)sender
 {
+    [self playSound:@"click" WithExt:@"mp3"];
+    
     recordViewController *recordController = [[recordViewController alloc] init];
     recordController.delegate = self;
     recordController.modalPresentationStyle = UIModalPresentationFormSheet;
@@ -211,6 +218,8 @@
             NSLog(@"Delete file error: %@", error);
         } else {
             customExists = NO;
+            [self playSound:@"trash" WithExt:@"mp3"];
+            
             NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"page1" ofType:@"aif"];
             NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
             self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
@@ -218,6 +227,7 @@
                 [self.player prepareToPlay];
                 [self.player setDelegate:self];
             }
+            trash.enabled = NO;
         }
     }
 
@@ -226,6 +236,7 @@
 - (void)didDismissModalView
 {
     [self dismissModalViewControllerAnimated:YES];
+    [self playSound:@"click" WithExt:@"mp3"];
     
     // custom audio file for page
     NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -240,6 +251,7 @@
             [self.player prepareToPlay];
             [self.player setDelegate:self];
         }
+        trash.enabled = YES;
     }
 }
 
@@ -257,6 +269,20 @@
     if (nextWord < [markerTimings count]) {
         float timeInterval = [[markerTimings objectAtIndex:nextWord] floatValue] - [[markerTimings objectAtIndex:nextWord-1] floatValue];
         timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(updateTimer) userInfo:nil repeats:NO];
+    }
+}
+
+- (void)playSound:(NSString *)fName WithExt:(NSString *)ext
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:fName ofType:ext];
+    SystemSoundID audioEffect;
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSURL *pathURL = [NSURL fileURLWithPath : path];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
+        AudioServicesPlaySystemSound(audioEffect);
+    } else {
+        NSLog(@"error, file not found: %@", path);
     }
 }
 

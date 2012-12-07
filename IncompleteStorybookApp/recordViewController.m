@@ -97,6 +97,8 @@
 {
     if (!audioRecorder.recording)
     {
+        [self playSound:@"click" WithExt:@"mp3"];
+        
         playButton.enabled = NO;
         stopButton.enabled = YES;
         [audioRecorder record];
@@ -107,6 +109,8 @@
 {
     if (!audioRecorder.recording)
     {
+        [self playSound:@"click" WithExt:@"mp3"];
+        
         stopButton.enabled = YES;
         recordButton.enabled = NO;
 
@@ -125,6 +129,8 @@
 
 - (IBAction)stop
 {
+    [self playSound:@"click" WithExt:@"mp3"];
+    
     stopButton.enabled = NO;
     playButton.enabled = YES;
     recordButton.enabled = YES;
@@ -140,6 +146,20 @@
 - (IBAction)dismissView
 {
     [delegate didDismissModalView];
+}
+
+- (void)playSound:(NSString *)fName WithExt:(NSString *)ext
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:fName ofType:ext];
+    SystemSoundID audioEffect;
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSURL *pathURL = [NSURL fileURLWithPath : path];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef) pathURL, &audioEffect);
+        AudioServicesPlaySystemSound(audioEffect);
+    } else {
+        NSLog(@"error, file not found: %@", path);
+    }
 }
 
 #pragma mark - Delegate Methods

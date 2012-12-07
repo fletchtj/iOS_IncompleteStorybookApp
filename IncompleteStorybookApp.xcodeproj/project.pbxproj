@@ -30,6 +30,10 @@
 		5A9DE57B1671384E00D63C6C /* ui_stop_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9DE5771671384E00D63C6C /* ui_stop_icon.png */; };
 		5A9DE57D1671398100D63C6C /* ui_close_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9DE57C1671398100D63C6C /* ui_close_icon.png */; };
 		5ABFD50616695A5E009ED510 /* misc_bucket.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ABFD50516695A5E009ED510 /* misc_bucket.png */; };
+		5AD6928C16718B2100D8C396 /* jj_if.aif in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6928A16718B2100D8C396 /* jj_if.aif */; };
+		5AD6928D16718B2100D8C396 /* jj_mf.aif in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6928B16718B2100D8C396 /* jj_mf.aif */; };
+		5AD6929016718EDF00D8C396 /* trash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6928F16718EDF00D8C396 /* trash.mp3 */; };
+		5AD692921671908800D8C396 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5AD692911671908800D8C396 /* click.mp3 */; };
 		5AED84D31651609E0011BB36 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AED84CE1651609E0011BB36 /* Actor.m */; };
 		5AED84D41651609E0011BB36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AED84D01651609E0011BB36 /* AppDelegate.m */; };
 		5AED84D51651609E0011BB36 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AED84D21651609E0011BB36 /* ViewController.m */; };
@@ -78,6 +82,10 @@
 		5A9DE5771671384E00D63C6C /* ui_stop_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ui_stop_icon.png; path = IncompleteStorybookApp/images/ui_stop_icon.png; sourceTree = SOURCE_ROOT; };
 		5A9DE57C1671398100D63C6C /* ui_close_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ui_close_icon.png; path = IncompleteStorybookApp/images/ui_close_icon.png; sourceTree = SOURCE_ROOT; };
 		5ABFD50516695A5E009ED510 /* misc_bucket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = misc_bucket.png; path = IncompleteStorybookApp/images/misc_bucket.png; sourceTree = SOURCE_ROOT; };
+		5AD6928A16718B2100D8C396 /* jj_if.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = jj_if.aif; path = IncompleteStorybookApp/Audio/jj_if.aif; sourceTree = SOURCE_ROOT; };
+		5AD6928B16718B2100D8C396 /* jj_mf.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = jj_mf.aif; path = IncompleteStorybookApp/Audio/jj_mf.aif; sourceTree = SOURCE_ROOT; };
+		5AD6928F16718EDF00D8C396 /* trash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trash.mp3; sourceTree = "<group>"; };
+		5AD692911671908800D8C396 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 		5AED84CD1651609E0011BB36 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Actor.h; path = IncompleteStorybookApp/Actor.h; sourceTree = SOURCE_ROOT; };
 		5AED84CE1651609E0011BB36 /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Actor.m; path = IncompleteStorybookApp/Actor.m; sourceTree = SOURCE_ROOT; };
 		5AED84CF1651609E0011BB36 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = IncompleteStorybookApp/AppDelegate.h; sourceTree = SOURCE_ROOT; };
@@ -191,6 +199,8 @@
 		5A2284791645C1020066BD93 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				5AD6928A16718B2100D8C396 /* jj_if.aif */,
+				5AD6928B16718B2100D8C396 /* jj_mf.aif */,
 				5AED84E3165161660011BB36 /* page1.aif */,
 			);
 			path = Audio;
@@ -224,6 +234,8 @@
 		5A9DE55E1671041B00D63C6C /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				5AD692911671908800D8C396 /* click.mp3 */,
+				5AD6928F16718EDF00D8C396 /* trash.mp3 */,
 				5A9DE56E167119EA00D63C6C /* ding.mp3 */,
 				5A9DE568167105B000D63C6C /* slidedown.mp3 */,
 				5A9DE55F1671041B00D63C6C /* boing.mp3 */,
@@ -328,6 +340,10 @@
 				5A9DE57A1671384E00D63C6C /* ui_record_icon.png in Resources */,
 				5A9DE57B1671384E00D63C6C /* ui_stop_icon.png in Resources */,
 				5A9DE57D1671398100D63C6C /* ui_close_icon.png in Resources */,
+				5AD6928C16718B2100D8C396 /* jj_if.aif in Resources */,
+				5AD6928D16718B2100D8C396 /* jj_mf.aif in Resources */,
+				5AD6929016718EDF00D8C396 /* trash.mp3 in Resources */,
+				5AD692921671908800D8C396 /* click.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +401,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tj Fletcher (XYAYRYN2G9)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -400,6 +416,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08CCFA71-1CC6-43F5-BD8D-C7E0882A313B";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -414,7 +431,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tj Fletcher";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -422,6 +439,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "78A3B356-0CC6-4CC5-9244-D4DFA6C791AE";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -431,11 +449,13 @@
 		5A2284711645C0180066BD93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tj Fletcher (XYAYRYN2G9)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IncompleteStorybookApp/IncompleteStorybookApp-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/IncompleteStorybookApp/IncompleteStorybookApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = IncompleteStorybookApp;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08CCFA71-1CC6-43F5-BD8D-C7E0882A313B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -443,11 +463,13 @@
 		5A2284721645C0180066BD93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tj Fletcher";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IncompleteStorybookApp/IncompleteStorybookApp-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/IncompleteStorybookApp/IncompleteStorybookApp-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = IncompleteStorybookApp;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "78A3B356-0CC6-4CC5-9244-D4DFA6C791AE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
