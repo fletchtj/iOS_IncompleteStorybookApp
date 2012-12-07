@@ -24,6 +24,7 @@
     IBOutlet UIButton *trash;
     NSMutableArray *markerTimings;
     NSArray *wordButtons;
+    NSArray *words;
     NSTimer *timer;
     int nextWord;
     CGPoint oPosJack;
@@ -38,6 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     UITapGestureRecognizer *tapBucket = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBucketTap:)];
@@ -54,6 +56,8 @@
     
     [playButton setBackgroundImage:[UIImage imageNamed:@"btn_play.png"] forState:UIControlStateNormal];
     wordButtons = [[NSArray alloc] initWithObjects:btn0, btn1, btn2, btn3, btn4, btn5, btn6, nil];
+    
+    words = [[NSArray alloc] initWithObjects:@"jack",@"and",@"jill",@"went",@"up",@"the",@"hill", nil];
     
     // audio file for page
 //    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"page1" ofType:@"aif"];
@@ -168,8 +172,16 @@
         NSLog(@"Could not play %@\n", p.url);
 }
 
+- (IBAction)wordButtonPressed:(UIButton *)sender
+{
+    if (player.playing == YES)
+        [self pausePlaybackForPlayer: player];
+    [self playSound:words[[sender tag]] WithExt:@"mp3"];
+}
+
 - (IBAction)playButtonPressed:(UIButton *)sender
 {
+    NSLog(@"player.playing: %d", player.playing);
     if (player.playing == YES)
         [self pausePlaybackForPlayer: player];
     else {

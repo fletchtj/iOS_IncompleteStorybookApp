@@ -17,6 +17,7 @@
     IBOutlet UIButton *recordCustomButton;
 }
 
+- (IBAction)wordButtonPressed:(UIButton *)sender;
 - (IBAction)playButtonPressed:(UIButton *)sender;
 - (IBAction)recordCustomPressed:(UIButton *)sender;
 - (IBAction)removeCustomAudioFile:(UIButton *)sender;
