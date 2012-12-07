@@ -220,7 +220,7 @@
             customExists = NO;
             [self playSound:@"trash" WithExt:@"mp3"];
             
-            NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"page1" ofType:@"aif"];
+            NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"jj_mf" ofType:@"aif"];
             NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
             self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
             if (self.player) {
@@ -315,15 +315,18 @@
 - (void)handlePan:(UIPanGestureRecognizer *)gestureRecognizer {
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view];
 //    CGPoint velocity = [gestureRecognizer velocityInView:gestureRecognizer.view];
-    if (gestureRecognizer.view.center.y >= oPosJack.y)
-    {
-        if (gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+    
+    if(gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        if (gestureRecognizer.view.center.y >= oPosJack.y)
+        {
             CGFloat yPos = gestureRecognizer.view.center.y + translation.y;
             gestureRecognizer.view.center = CGPointMake(gestureRecognizer.view.center.x, yPos);
             [gestureRecognizer setTranslation:CGPointMake(0, 0) inView:gestureRecognizer.view];
-        } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-            CGPoint finalPosition = CGPointMake(418.0, 314.0);
-            [(Actor *)gestureRecognizer.view moveToPoint:finalPosition FromPoint:gestureRecognizer.view.center WithDuration:0.75];
+        }
+    } else if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        if (gestureRecognizer.view.center.y > 314.0)
+        {
+            [(Actor *)gestureRecognizer.view moveToPoint:CGPointMake(418.0, 314.0) FromPoint:gestureRecognizer.view.center WithDuration:0.75];
             [(Actor *)gestureRecognizer.view playSound:@"boing" WithExt:@"mp3"];
         }
     }
