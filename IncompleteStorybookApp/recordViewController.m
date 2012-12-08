@@ -49,32 +49,7 @@
     playButton.enabled = NO;
     stopButton.enabled = NO;
     
-    NSArray *dirPaths;
-    NSString *docsDir;
-    
-    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    docsDir = [dirPaths objectAtIndex:0];
-    NSString *soundFilePath = [docsDir
-                               stringByAppendingPathComponent:@"custom_page1.caf"];
-    
-    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
-    
-    NSDictionary *recordSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [NSNumber numberWithInt:AVAudioQualityMin], AVEncoderAudioQualityKey,
-                            [NSNumber numberWithInt:16], AVEncoderBitRateKey,
-                            [NSNumber numberWithInt: 2], AVNumberOfChannelsKey,
-                            [NSNumber numberWithFloat:44100.0], AVSampleRateKey, nil];
-    
-    NSError *error = nil;
-    
-    audioRecorder = [[AVAudioRecorder alloc] initWithURL:soundFileURL settings:recordSettings error:&error];
-    
-    if (error)
-    {
-        NSLog(@"error: %@", [error localizedDescription]);
-    } else {
-        [audioRecorder prepareToRecord];
-    }
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,6 +76,34 @@
         
         playButton.enabled = NO;
         stopButton.enabled = YES;
+        
+        NSArray *dirPaths;
+        NSString *docsDir;
+        
+        dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        docsDir = [dirPaths objectAtIndex:0];
+        NSString *soundFilePath = [docsDir
+                                   stringByAppendingPathComponent:@"custom_page1.caf"];
+        
+        NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+        
+        NSDictionary *recordSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [NSNumber numberWithInt:AVAudioQualityMin], AVEncoderAudioQualityKey,
+                                        [NSNumber numberWithInt:16], AVEncoderBitRateKey,
+                                        [NSNumber numberWithInt: 2], AVNumberOfChannelsKey,
+                                        [NSNumber numberWithFloat:44100.0], AVSampleRateKey, nil];
+        
+        NSError *error = nil;
+        
+        audioRecorder = [[AVAudioRecorder alloc] initWithURL:soundFileURL settings:recordSettings error:&error];
+        
+        if (error)
+        {
+            NSLog(@"error: %@", [error localizedDescription]);
+        } else {
+            [audioRecorder prepareToRecord];
+        }
+        
         [audioRecorder record];
     }
 }

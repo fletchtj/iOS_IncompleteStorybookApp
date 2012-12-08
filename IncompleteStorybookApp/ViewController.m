@@ -181,7 +181,6 @@
 
 - (IBAction)playButtonPressed:(UIButton *)sender
 {
-    NSLog(@"player.playing: %d", player.playing);
     if (player.playing == YES)
         [self pausePlaybackForPlayer: player];
     else {
